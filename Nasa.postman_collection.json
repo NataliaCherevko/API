@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "1938de08-c1c8-4622-b246-d44008e7c11c",
+		"name": "Nasa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26777259"
+	},
+	"item": [
+		{
+			"name": "тренировка т.к.",
+			"item": []
+		},
+		{
+			"name": "cameras",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"pm.test(\"Название теста\", function (){\r",
+							"    pm.expect(jsonData.photos[0].camera.name).to.eql(\"PANCAM\")\r",
+							"}) "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?sol=1&camera=fhaz&api_key=DEMO_KEY&camera=pancam",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nasa",
+						"gov"
+					],
+					"path": [
+						"mars-photos",
+						"api",
+						"v1",
+						"rovers",
+						"opportunity",
+						"photos"
+					],
+					"query": [
+						{
+							"key": "sol",
+							"value": "1"
+						},
+						{
+							"key": "camera",
+							"value": "fhaz"
+						},
+						{
+							"key": "api_key",
+							"value": "DEMO_KEY"
+						},
+						{
+							"key": "camera",
+							"value": "pancam"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "curiosity",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nasa.gov/mars-photos/api/v1/manifests/Curiosity?api_key=DEMO_KEY",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nasa",
+						"gov"
+					],
+					"path": [
+						"mars-photos",
+						"api",
+						"v1",
+						"manifests",
+						"Curiosity"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "DEMO_KEY"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1666 sol",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nasa.gov/mars-photos/api/v1/manifests/curiosity?api_key=DEMO_KEY",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nasa",
+						"gov"
+					],
+					"path": [
+						"mars-photos",
+						"api",
+						"v1",
+						"manifests",
+						"curiosity"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "DEMO_KEY"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,1106 @@
+{
+	"info": {
+		"_postman_id": "e2023c5f-a231-4ee8-9201-68fb08aea572",
+		"name": "Pet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26777259"
+	},
+	"item": [
+		{
+			"name": "pet",
+			"item": [
+				{
+					"name": "создание питомца",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверка всей структуры\", function (){\r",
+									"pm.expect(jsonData).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"name\")\r",
+									"pm.expect(jsonData).to.have.property(\"photoUrls\")\r",
+									"pm.expect(jsonData).to.have.property(\"status\")\r",
+									"pm.expect(jsonData).to.have.property(\"tags\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что имя=gopa\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(\"gopa\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что name=doggie\", function () {\r",
+									"    pm.expect(jsonData.name).to.eql(\"doggie\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в tags во втором обекте name=uuu\", function () {\r",
+									"    pm.expect(jsonData.tags[1].name).to.eql(\"uuu\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в tags  в первом объекте id=15\", function () {\r",
+									"    pm.expect(jsonData.tags[0].id).to.eql(15);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в photoUrls  последний эл=т массива=фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в photoUrls  эл-ты массива=фото1, фото2,фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[0]).to.eql(\"фото1\");\r",
+									"    pm.expect(jsonData.photoUrls[1]).to.eql(\"фото2\");\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание заказа на питомца. Проверить типы данных полей\", function (){\r",
+									"    pm.expect(jsonData.id).to.be.a(\"number\")\r",
+									"    pm.expect(jsonData.category.id).to.be.a(\"number\")\r",
+									"    pm.expect(jsonData.category.name).to.be.a(\"string\")\r",
+									"    pm.expect(jsonData.photoUrls).to.be.a(\"array\")\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"gopa\"\r\n  },\r\n  \"name\": \"doggie\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    { \"id\": 15,\r\n      \"name\": \"string\"\r\n    },\r\n    { \"id\": 0,\r\n      \"name\": \"uuu\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "создание питомца AI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверка всей структуры\", function (){\r",
+									"pm.expect(jsonData).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"name\")\r",
+									"pm.expect(jsonData).to.have.property(\"photoUrls\")\r",
+									"pm.expect(jsonData).to.have.property(\"status\")\r",
+									"pm.expect(jsonData).to.have.property(\"tags\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что имя=gopa\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(\"gopa\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что name=doggie\", function () {\r",
+									"    pm.expect(jsonData.name).to.eql(\"doggie\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в tags во втором обекте name=uuu\", function () {\r",
+									"    pm.expect(jsonData.tags[1].name).to.eql(\"uuu\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в tags  в первом объекте id=15\", function () {\r",
+									"    pm.expect(jsonData.tags[0].id).to.eql(15);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в photoUrls  последний эл=т массива=фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в photoUrls  эл-ты массива=фото1, фото2,фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[0]).to.eql(\"фото1\");\r",
+									"    pm.expect(jsonData.photoUrls[1]).to.eql(\"фото2\");\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание заказа на питомца. Проверить типы данных полей\", function (){\r",
+									"    pm.expect(jsonData.id).to.be.a(\"number\")\r",
+									"    pm.expect(jsonData.category.id).to.be.a(\"number\")\r",
+									"    pm.expect(jsonData.category.name).to.be.a(\"string\")\r",
+									"    pm.expect(jsonData.photoUrls).to.be.a(\"array\")\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"gopa\"\r\n  },\r\n  \"name\": \"doggie\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    { \"id\": 15,\r\n      \"name\": \"string\"\r\n    },\r\n    { \"id\": 0,\r\n      \"name\": \"uuu\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tren test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"const jsonData = pm.response.json();\r",
+									"pm.test(\"Availability an id in the category\", function (){\r",
+									"    pm.expect(jsonData).to.have.property(\"id\")\r",
+									"    pm.expect(jsonData).to.have.property(\"category\")\r",
+									"    pm.expect(jsonData.category).to.have.property(\"name\") \r",
+									"    pm.expect(jsonData).to.have.property(\"tags\")\r",
+									"    pm.expect(jsonData).to.have.property(\"name\") \r",
+									"});\r",
+									"pm.test(\"Availability of the status\", function (){\r",
+									"    pm.expect(jsonData).to.have.property(\"status\")  \r",
+									"});\r",
+									"pm.test(\"Creat pet. In the tags second obgect name=uuu\", function () {\r",
+									"    pm.expect(jsonData.tags[1].name).to.eql(\"uuu\");\r",
+									"});\r",
+									"pm.test(\"Name in the category=gopa\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(\"gopa\");\r",
+									"});\r",
+									"pm.test(\"In the tags first element of massiv=15\", function () {\r",
+									"    pm.expect(jsonData.tags[0].id).to.eql(15);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"gopa\"\r\n  },\r\n  \"name\": \"doggie\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    { \"id\": 15,\r\n      \"name\": \"string\"\r\n    },\r\n    { \"id\": 0,\r\n      \"name\": \"uuu\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "обновл питомца",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Обновление. Проверка всей структуры\", function (){\r",
+									"pm.expect(jsonData).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"name\")\r",
+									"pm.expect(jsonData).to.have.property(\"photoUrls\")\r",
+									"pm.expect(jsonData).to.have.property(\"status\")\r",
+									"pm.expect(jsonData).to.have.property(\"tags\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что имя=cats\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(\"cats\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что name=уту\", function () {\r",
+									"    pm.expect(jsonData.name).to.eql(\"yty\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в tags во втором обекте name=апол\", function () {\r",
+									"    pm.expect(jsonData.tags[1].name).to.eql(\"апол\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в tags  в первом объекте id=15\", function () {\r",
+									"    pm.expect(jsonData.tags[0].id).to.eql(15);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в photoUrls  последний эл=т массива=фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в photoUrls  эл-ты массива=фото1, фото2,фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[0]).to.eql(\"фото1\");\r",
+									"    pm.expect(jsonData.photoUrls[1]).to.eql(\"фото2\");\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Обновление. Проверить, что статус=sold\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql(\"sold\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Обновление. Проверить, что в photoUrls последний элемент=фото4\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[3]).to.eql(\"фото4\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 987,\r\n  \"category\": {\r\n    \"id\": 567,\r\n    \"name\": \"cats\"\r\n  },\r\n  \"name\": \"yty\",\r\n  \"photoUrls\": [\r\n    \"фото1\", \"фото2\",\"фото3\",\"фото4\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 15,\r\n      \"name\": \"неквыыыы\"\r\n    },\r\n    {\r\n      \"id\": 18,\r\n      \"name\": \"апол\"\r\n    }\r\n  ],\r\n  \"status\": \"sold\"\r\n}"
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put tren",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Обновление. Проверка всей структуры\", function (){\r",
+									"pm.expect(jsonData).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"name\")\r",
+									"pm.expect(jsonData).to.have.property(\"photoUrls\")\r",
+									"pm.expect(jsonData).to.have.property(\"status\")\r",
+									"pm.expect(jsonData).to.have.property(\"tags\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что имя=cats\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(\"cats\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что name=уту\", function () {\r",
+									"    pm.expect(jsonData.name).to.eql(\"yty\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в tags во втором обекте name=апол\", function () {\r",
+									"    pm.expect(jsonData.tags[1].name).to.eql(\"апол\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в tags  в первом объекте id=15\", function () {\r",
+									"    pm.expect(jsonData.tags[0].id).to.eql(15);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в photoUrls  последний эл=т массива=фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в photoUrls  эл-ты массива=фото1, фото2,фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[0]).to.eql(\"фото1\");\r",
+									"    pm.expect(jsonData.photoUrls[1]).to.eql(\"фото2\");\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Обновление. Проверить, что статус=pending\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql(\"pending\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Обновление. Проверить, что в photoUrls последний элемент=фото5\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[4]).to.eql(\"фото5\");\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 987,\r\n  \"category\": {\r\n    \"id\": 567,\r\n    \"name\": \"cats\"\r\n  },\r\n  \"name\": \"yty\",\r\n  \"photoUrls\": [\r\n    \"фото1\", \"фото2\",\"фото3\",\"фото4\",\"фото5\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 15,\r\n      \"name\": \"неквыыыы\"\r\n    },\r\n    {\r\n      \"id\": 18,\r\n      \"name\": \"апол\"\r\n    }\r\n  ],\r\n  \"status\": \"pending\"\r\n}"
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "получение питомца по статусу",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/findByStatus?status=sold&status=available",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"findByStatus"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "sold"
+								},
+								{
+									"key": "status",
+									"value": "available"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "получение по Id питомца",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Получение по ID. Проверка всей структуры\", function (){\r",
+									"pm.expect(jsonData).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"name\")\r",
+									"pm.expect(jsonData).to.have.property(\"photoUrls\")\r",
+									"pm.expect(jsonData).to.have.property(\"status\")\r",
+									"pm.expect(jsonData).to.have.property(\"tags\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Получение по id. Проверить, что имя=cats\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(\"cats\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Получение по id. Проверить, что name=уту\", function () {\r",
+									"    pm.expect(jsonData.name).to.eql(\"yty\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Получение по id. Проверить, что в tags во втором обекте name=апол\", function () {\r",
+									"    pm.expect(jsonData.tags[1].name).to.eql(\"апол\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Получение по id. Проверить, что в tags  в первом объекте id=15\", function () {\r",
+									"    pm.expect(jsonData.tags[0].id).to.eql(15);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Получение по id. Проверить, что в photoUrls  последний эл=т массива=фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Получение по id. Проверить, что в photoUrls  эл-ты массива=фото1, фото2,фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[0]).to.eql(\"фото1\");\r",
+									"    pm.expect(jsonData.photoUrls[1]).to.eql(\"фото2\");\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Получение по id. Проверить, что статус=sold\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql(\"sold\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Получение по id. Проверить, что в photoUrls последний элемент=фото4\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[3]).to.eql(\"фото4\");\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/9223372000001085472",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"9223372000001085472"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "получение по Id tren dodel",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Обновление. Проверка всей структуры\", function (){\r",
+									"pm.expect(jsonData).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"name\")\r",
+									"pm.expect(jsonData).to.have.property(\"photoUrls\")\r",
+									"pm.expect(jsonData).to.have.property(\"status\")\r",
+									"pm.expect(jsonData).to.have.property(\"tags\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что имя=cats\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(\"cats\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что name=уту\", function () {\r",
+									"    pm.expect(jsonData.name).to.eql(\"yty\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в tags во втором обекте name=апол\", function () {\r",
+									"    pm.expect(jsonData.tags[1].name).to.eql(\"апол\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в tags  в первом объекте id=15\", function () {\r",
+									"    pm.expect(jsonData.tags[0].id).to.eql(15);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в photoUrls  последний эл=т массива=фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в photoUrls  эл-ты массива=фото1, фото2,фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[0]).to.eql(\"фото1\");\r",
+									"    pm.expect(jsonData.photoUrls[1]).to.eql(\"фото2\");\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Обновление. Проверить, что статус=pending\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql(\"pending\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Обновление. Проверить, что в photoUrls последний элемент=фото5\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[4]).to.eql(\"фото5\");\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/9223372000001085472",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"9223372000001085472"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "удаление питомца",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/34",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"34"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "store",
+			"item": [
+				{
+					"name": "получение заказа по id питомца",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/store/order/8",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"store",
+								"order",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "удаление заказа по id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/store/order/7",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"store",
+								"order",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "создание питомца",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверка всей структуры\", function (){\r",
+									"pm.expect(jsonData).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"name\")\r",
+									"pm.expect(jsonData).to.have.property(\"photoUrls\")\r",
+									"pm.expect(jsonData).to.have.property(\"status\")\r",
+									"pm.expect(jsonData).to.have.property(\"tags\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что имя=cats\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(\"cats\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что name=уту\", function () {\r",
+									"    pm.expect(jsonData.name).to.eql(\"yty\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в tags во втором обекте name=апол\", function () {\r",
+									"    pm.expect(jsonData.tags[1].name).to.eql(\"апол\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в tags  в первом объекте id=15\", function () {\r",
+									"    pm.expect(jsonData.tags[0].id).to.eql(15);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в photoUrls  последний эл=т массива=фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в photoUrls  эл-ты массива=фото1, фото2,фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[0]).to.eql(\"фото1\");\r",
+									"    pm.expect(jsonData.photoUrls[1]).to.eql(\"фото2\");\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 987,\r\n  \"category\": {\r\n    \"id\": 567,\r\n    \"name\": \"cats\"\r\n  },\r\n  \"name\": \"yty\",\r\n  \"photoUrls\": [\r\n    \"фото1\", \"фото2\",\"фото3\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 15,\r\n      \"name\": \"вакаа\"\r\n    },\r\n    {\r\n      \"id\": 18,\r\n      \"name\": \"апол\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "обновл питомца",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Обновление. Проверка всей структуры\", function (){\r",
+									"pm.expect(jsonData).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"name\")\r",
+									"pm.expect(jsonData).to.have.property(\"photoUrls\")\r",
+									"pm.expect(jsonData).to.have.property(\"status\")\r",
+									"pm.expect(jsonData).to.have.property(\"tags\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что имя=cats\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(\"cats\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что name=уту\", function () {\r",
+									"    pm.expect(jsonData.name).to.eql(\"yty\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в tags во втором обекте name=апол\", function () {\r",
+									"    pm.expect(jsonData.tags[1].name).to.eql(\"апол\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в tags  в первом объекте id=15\", function () {\r",
+									"    pm.expect(jsonData.tags[0].id).to.eql(15);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в photoUrls  последний эл=т массива=фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Создание питомца. Проверить, что в photoUrls  эл-ты массива=фото1, фото2,фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[0]).to.eql(\"фото1\");\r",
+									"    pm.expect(jsonData.photoUrls[1]).to.eql(\"фото2\");\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Обновление. Проверить, что статус=sold\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql(\"sold\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Обновление. Проверить, что в photoUrls последний элемент=фото4\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[3]).to.eql(\"фото4\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 987,\r\n  \"category\": {\r\n    \"id\": 567,\r\n    \"name\": \"cats\"\r\n  },\r\n  \"name\": \"yty\",\r\n  \"photoUrls\": [\r\n    \"фото1\", \"фото2\",\"фото3\",\"фото4\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 15,\r\n      \"name\": \"неквыыыы\"\r\n    },\r\n    {\r\n      \"id\": 18,\r\n      \"name\": \"апол\"\r\n    }\r\n  ],\r\n  \"status\": \"sold\"\r\n}"
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "получение питомца по статусу",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/findByStatus?status=pending",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"findByStatus"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "sold",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "pending"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "получение по Id питомца",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Получение по ID. Проверка всей структуры\", function (){\r",
+									"pm.expect(jsonData).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"id\")\r",
+									"pm.expect(jsonData.category).to.have.property(\"name\")\r",
+									"pm.expect(jsonData).to.have.property(\"photoUrls\")\r",
+									"pm.expect(jsonData).to.have.property(\"status\")\r",
+									"pm.expect(jsonData).to.have.property(\"tags\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Получение по id. Проверить, что имя=cats\", function () {\r",
+									"    pm.expect(jsonData.category.name).to.eql(\"cats\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Получение по id. Проверить, что name=уту\", function () {\r",
+									"    pm.expect(jsonData.name).to.eql(\"yty\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Получение по id. Проверить, что в tags во втором обекте name=апол\", function () {\r",
+									"    pm.expect(jsonData.tags[1].name).to.eql(\"апол\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Получение по id. Проверить, что в tags  в первом объекте id=15\", function () {\r",
+									"    pm.expect(jsonData.tags[0].id).to.eql(15);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Получение по id. Проверить, что в photoUrls  последний эл=т массива=фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Получение по id. Проверить, что в photoUrls  эл-ты массива=фото1, фото2,фото3\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[0]).to.eql(\"фото1\");\r",
+									"    pm.expect(jsonData.photoUrls[1]).to.eql(\"фото2\");\r",
+									"    pm.expect(jsonData.photoUrls[2]).to.eql(\"фото3\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Получение по id. Проверить, что статус=sold\", function () {\r",
+									"    pm.expect(jsonData.status).to.eql(\"sold\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Получение по id. Проверить, что в photoUrls последний элемент=фото4\", function () {\r",
+									"    pm.expect(jsonData.photoUrls[3]).to.eql(\"фото4\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/987",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"987"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "удаление питомца",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/34",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"34"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
